@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Personajes from "./components/Personajes/Personajes";
 import Grafico from "./components/Chart";
 function App() {
