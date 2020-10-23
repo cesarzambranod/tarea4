@@ -9,23 +9,25 @@ const Personajes = () => {
   const [info, setInfo] = useState({});
   const [fetching, setFetching] = useState(true);
   const [error, setError] = useState(false);
-
+  const[search, setSearch]=useState([]);
   const inputSearch = React.createRef();
+
   // custom Hooks
   useEffect(() => {
     fetch(`${baseUrl}/character/`)
       .then((response) => response.json())
       .then(({ results, info }) => {
         setPersonajes(results);
+        setSearch(results);
         setInfo(info);
         setFetching(false);
       })
       .catch((e) => setError(true));
   }, []);
-
   const handlerButton = () => {
     console.log("Buscar...");
-    console.log(inputSearch.current.value);
+    const filterPersonaje = personajes.filter((personajes)=>personajes.name.toLowerCase().includes(inputSearch.current.value.toLowerCase()));
+    setSearch([...filterPersonaje]);
   };
   return (
     <>
@@ -48,8 +50,8 @@ const Personajes = () => {
 
         {fetching && <Loading />}
         <Info {...info} />
-        <div className="row">
-          {personajes.map((personaje) => (
+        <div className="row" key="">
+          {search.map((personaje) => (
             <Personaje {...personaje} />
           ))}
         </div>
