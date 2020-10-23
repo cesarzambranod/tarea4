@@ -33,21 +33,21 @@ const Personajes = () => {
     <>
       <div className="container">
         <h1 className="text-center text-info">Personajes</h1>
-
-        <input
-          ref={inputSearch}
-          type="text"
-          placeholder="Buscar por nombre..."
-          className="form-control  m-auto w-50 mt-5 mb-5"
-        />
-        <button
-          type="button"
-          onClick={handlerButton}
-          className="btn btn-primary"
-        >
-          Buscar
-        </button>
-
+        <div style={{display: 'flex',padding:'1em'}}>
+          <input
+            ref={inputSearch}
+            type="text"
+            placeholder="Buscar por nombre..."
+            className="form-control  m-auto w-50 mt-5 mb-5"
+          />
+          <button
+            type="button"
+            onClick={handlerButton}
+            className="btn btn-primary"
+          >
+            Buscar
+          </button>
+        </div>
         {fetching && <Loading />}
         <Info {...info} />
         <div className="row" key="">
