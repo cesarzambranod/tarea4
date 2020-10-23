@@ -4,8 +4,8 @@ import Grafico from "./components/Chart";
 function App() {
   return (
     <>
-      <Grafico />
       <Personajes />
+      <Grafico />
     </>
   );
 }
